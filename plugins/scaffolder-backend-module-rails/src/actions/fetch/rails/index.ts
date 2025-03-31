@@ -64,7 +64,6 @@ export function createFetchRailsAction(options: {
     schema: {
       input: {
         type: 'object',
-        required: ['url'],
         properties: {
           url: {
             title: 'Fetch URL',
@@ -206,13 +205,15 @@ export function createFetchRailsAction(options: {
       const workDir = await ctx.createTemporaryDirectory();
       const resultDir = resolvePath(workDir, 'result');
 
-      await fetchContents({
-        reader,
-        integrations,
-        baseUrl: ctx.templateInfo?.baseUrl,
-        fetchUrl: ctx.input.url,
-        outputPath: workDir,
-      });
+      if (ctx.input.url) {
+        await fetchContents({
+          reader,
+          integrations,
+          baseUrl: ctx.templateInfo?.baseUrl,
+          fetchUrl: ctx.input.url,
+          outputPath: workDir,
+        });
+      }
 
       const templateRunner = new RailsNewRunner({ containerRunner });
 
