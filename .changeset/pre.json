@@ -202,6 +202,7 @@
     "@backstage/plugin-user-settings-common": "0.0.1"
   },
   "changesets": [
+    "create-app-1748431609",
     "eight-planets-see",
     "evil-cooks-watch",
     "good-paths-act",
@@ -210,6 +211,10 @@
     "petite-candies-tan",
     "puny-pillows-wave",
     "salty-worlds-float",
+    "scaffolder-breakages-1",
+    "scaffolder-breakages-2",
+    "scaffolder-breakages-3",
+    "scaffolder-deprecations-1",
     "six-mangos-yell",
     "small-dots-march",
     "smooth-eels-think",

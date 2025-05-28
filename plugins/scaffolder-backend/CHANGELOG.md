@@ -1,5 +1,64 @@
 # @backstage/plugin-scaffolder-backend
 
+## 2.0.0-next.1
+
+### Major Changes
+
+- 33394db: **BREAKING CHANGES**
+
+  Removal of deprecated re-exports from module packages.
+
+  The following functions have been re-exported from the `scaffolder-backend` plugin for quite some time, and now it's time to clean them up. They've been moved as follows:
+
+  - `createPublishAzureAction` should be imported from `@backstage/plugin-scaffolder-backend-module-azure` instead.
+
+  - `createPublishBitbucketCloudAction` should be imported from `@backstage/plugin-scaffolder-backend-module-bitbucket-cloud` instead.
+
+  - `createPublishBitbucketServerAction` and `createPublishBitbucketServerPullRequestAction` can be imported from `@backstage/plugin-scaffolder-backend-module-bitbucket-server` instead.
+
+  - `createPublishBitbucketAction` should be imported from `@backstage/plugin-scaffolder-backend-module-bitbucket` instead.
+
+  - `createPublishGerritAction` and `createPublishGerritReviewAction` can be imported from `@backstage/plugin-scaffolder-backend-module-gerrit` instead.
+
+  - `createGithubActionsDispatchAction`, `createGithubDeployKeyAction`, `createGithubEnvironmentAction`, `createGithubIssuesLabelAction`, `CreateGithubPullRequestActionOptions`, `createGithubRepoCreateAction`, `createGithubRepoPushAction`, `createGithubWebhookAction`, and `createPublishGithubAction` can be imported from `@backstage/plugin-scaffolder-backend-module-github` instead.
+
+  - `createPublishGitlabAction` should be imported from `@backstage/plugin-scaffolder-backend-module-gitlab` instead.
+
+  - `ActionContext`. `createTemplateAction`, `executeShellCommand`, `ExecuteShellCommandOptions`, `fetchContents`, `TaskSecrets`, and `TemplateAction` should be imported from `@backstage/plugin-scaffolder-node` instead.
+
+  - `ScaffolderEntitiesProcessor` should be imported from `@backstage/plugin-catalog-backend-module-scaffolder-entity-model` instead.
+
+- a8fcf04: **BREAKING ALPHA**: The `/alpha` export no longer exports the plugin. Please use `import('@backstage/plugin-scaffolder-backend')` instead as this has been removed.
+
+  **BREAKING CHANGES**: The old `createRouter` function which was used in the old backend system has been removed along with the `RouterOptions` type.
+
+- 73b94d7: **BREAKING CHANGES**
+
+  The following functions have been re-exported from the `scaffolder-backend` plugin for quite some time, and now it's time to clean them up. They've been moved as follows:
+
+  - `SerializedTask`, `SerializedTaskEvent`, `TaskBroker`, `TaskBrokerDispatchOptions`, `TaskBrokerDispatchResult`, `TaskCompletionState`, `TaskContext`, `TaskEventType`, `TaskStatus`, `TemplateFilter`, and `TemplateGlobal` should be imported from `@backstage/plugin-scaffolder-node` instead.
+
+  - The deprecated `copyWithoutRender` option has been removed from `fetch:template` action. You should rename the option to `copyWithoutTemplating` instead.
+
+### Minor Changes
+
+- 73b94d7: **DEPRECATIONS**
+
+  The following types and implementations have been deprecated, either because they're no longer relevant, or because upcoming changes to the `scaffolder-backend` after `2.0.0` will influence the changes to these API surfaces.
+
+  - `CreateWorkerOptions`
+  - `DatabaseTaskStore`
+  - `DatabaseTaskStoreOptions`
+  - `TaskManager`
+  - `TaskStoreCreateTaskOptions`
+  - `TaskStoreCreateTaskResult`
+  - `TaskStoreEmitOptions`
+  - `TaskStoreListEventsOptions`
+  - `TaskStoreRecoverTaskOptions`
+  - `TaskStoreShutDownTaskOptions`
+
+  There is no current path off deprecation, these types are going to be removed and rethought with a better way to define workers in the new backend system.
+
 ## 1.33.1-next.0
 
 ### Patch Changes
